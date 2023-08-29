@@ -1,0 +1,27 @@
+:root {
+  direction: rtl;
+  font-family: "Rubik", sans-serif;
+  @each $name, $color in $light {
+    --color-#{$name}: #{$color};
+  }
+  transition: all 1s;
+}
+
+.dark {
+  @each $name, $color in $dark {
+    --color-#{$name}: #{$color};
+  }
+}
+
+@function getColor($color-name) {
+  @return var(--color-#{$color-name});
+}
+
+// =============================================
+
+body {
+  background-color: getColor(bg-main);
+}
+form {
+  background-color: getColor(fg-main);
+}
